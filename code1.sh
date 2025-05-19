@@ -1,15 +1,15 @@
 #!/bin/bash
 
 echo "Study Time Organizer"
-
+#Maya Hassan Abualfaraj      445006876
 read -p "Enter total number of lessons: " total_lessons
 read -p "Enter number of remaining days: " remaining_days 
-
+#Maya Hassan Abualfaraj      445006876
 if ! [[ "$total_lessons" =~ ^[0-9]+$ ]] || ! [[ "$remaining_days" =~ ^[0-9]+$ ]]; then
 echo "please enter valid numbers only"
 exit 1 
 fi
-
+#Mayas Hassan Abualfaraj    445006876
 if [ "$remaining_days" -eq 0 ]; then
 echo "Remaining days cannot be zero"
 exit 1
