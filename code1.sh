@@ -19,3 +19,28 @@ if [ "$remaining_days" -eq 0 ]; then
 echo "Remaining days cannot be zero"    # Print warning if user enters 0 for remaining days
 exit 1       # Exit the script to prevent further execution
 fi
+
+#Aram Mohammad Alouni  44510225
+#Calculate lessons per day
+lessons_per_day=$((total_lessons / remaining_days))
+extra_lessons=$((total_lessons % remaining_days))
+
+#Create the output file
+output_file="study_plan.txt"
+echo "Study plan for $total_lessons lessons over $remaining_days days" > "$output_file"
+
+#Print the average using awk
+awk -v total="$total_lessons" -v days="$remaining_days" 'BEGIN { print "Average lessons per day: " total / days }' >> "$output_file"
+
+#Generate the daily study plan 
+for (( day=1; day<=remaining_days; day++ )); do
+	if [ $day -le "$extra_lessons" ]; then
+		lessons=$((lessons_per_day + 1))
+	else
+		lessons=$lessons_per_day
+	fi
+	echo "Day $day: --> Study $lessons lesson(s)"
+	echo "Day $day: --> Study $lessons lesson(s)" >> "$output_file"
+done
+
+
